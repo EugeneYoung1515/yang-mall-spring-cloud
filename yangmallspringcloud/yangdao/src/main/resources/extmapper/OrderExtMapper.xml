@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.OrderMapper">
+  <sql id="Base_Column_List">
+    order_id, user_id, user_name,
+      create_date, pay_total, item_total,
+      yunfei_cost, pay_date, status_name,
+      status_code, pay_method, pay_platform_number,
+      wait_pay_date
+  </sql>
+
+  <select id="selectByOrderId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_order where order_id = #{orderId}
+  </select>
+  <update id="updateByOrderId">
+    update t_order
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTotal != null">
+        pay_total = #{payTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="itemTotal != null">
+        item_total = #{itemTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusName != null">
+        status_name = #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        status_code = #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payPlatformNumber != null">
+        pay_platform_number = #{payPlatformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="waitPayDate != null">
+        wait_pay_date = #{waitPayDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+<select id="selectByOrderIdAndPayPlatformNumber" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List"/>
+  from t_order where order_id = #{param1} and pay_platform_number = #{param2}
+</select>
+  <select id="selectByPayPlatformNumber" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_order where  pay_platform_number = #{payPlatformNumber}
+  </select>
+  <insert id="insertSelectiveOrUpdateSelective" parameterType="com.ywcjxf.mall.pojo.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="payTotal != null">
+        pay_total,
+      </if>
+      <if test="itemTotal != null">
+        item_total,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="statusName != null">
+        status_name,
+      </if>
+      <if test="statusCode != null">
+        status_code,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="payPlatformNumber != null">
+        pay_platform_number,
+      </if>
+      <if test="waitPayDate != null">
+        wait_pay_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTotal != null">
+        #{payTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="itemTotal != null">
+        #{itemTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusName != null">
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payPlatformNumber != null">
+        #{payPlatformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="waitPayDate != null">
+        #{waitPayDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on conflict (order_id)
+    do
+    update
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTotal != null">
+        pay_total = #{payTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="itemTotal != null">
+        item_total = #{itemTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusName != null">
+        status_name = #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        status_code = #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payPlatformNumber != null">
+        pay_platform_number = #{payPlatformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="waitPayDate != null">
+        wait_pay_date = #{waitPayDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+  </insert>
+</mapper>

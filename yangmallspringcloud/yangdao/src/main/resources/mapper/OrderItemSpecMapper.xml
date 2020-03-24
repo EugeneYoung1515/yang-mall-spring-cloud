@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.OrderItemSpecMapper">
+  <resultMap id="BaseResultMap" type="com.ywcjxf.mall.pojo.OrderItemSpec">
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="spec_title" jdbcType="VARCHAR" property="specTitle" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="sale_price" jdbcType="NUMERIC" property="salePrice" />
+    <result column="represent_price" jdbcType="NUMERIC" property="representPrice" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="status_code" jdbcType="INTEGER" property="statusCode" />
+    <result column="status_name" jdbcType="VARCHAR" property="statusName" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="yunfei_cost" jdbcType="VARCHAR" property="yunfeiCost" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ywcjxf.mall.pojo.OrderItemSpec">
+    insert into t_order_item_spec (spec_id, order_id, spec_title, 
+      spec_name, sale_price, represent_price, 
+      quantity, status_code, status_name, 
+      item_id, yunfei_cost)
+    values (#{specId,jdbcType=INTEGER}, #{orderId,jdbcType=BIGINT}, #{specTitle,jdbcType=VARCHAR}, 
+      #{specName,jdbcType=VARCHAR}, #{salePrice,jdbcType=NUMERIC}, #{representPrice,jdbcType=NUMERIC}, 
+      #{quantity,jdbcType=INTEGER}, #{statusCode,jdbcType=INTEGER}, #{statusName,jdbcType=VARCHAR}, 
+      #{itemId,jdbcType=INTEGER}, #{yunfeiCost,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywcjxf.mall.pojo.OrderItemSpec">
+    insert into t_order_item_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="specId != null">
+        spec_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="specTitle != null">
+        spec_title,
+      </if>
+      <if test="specName != null">
+        spec_name,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="representPrice != null">
+        represent_price,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="statusCode != null">
+        status_code,
+      </if>
+      <if test="statusName != null">
+        status_name,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="specId != null">
+        #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="specTitle != null">
+        #{specTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="specName != null">
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="representPrice != null">
+        #{representPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="statusCode != null">
+        #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="statusName != null">
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

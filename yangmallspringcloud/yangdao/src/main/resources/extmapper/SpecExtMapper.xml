@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.SpecMapper">
+  <select id="selectAllByItemId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_spec
+    where item_id = #{itemId,jdbcType=INTEGER} order by spec_id
+  </select>
+
+  <select id="selectFirstSpecByItemId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_spec
+    where item_id = #{itemId,jdbcType=INTEGER} order by spec_id limit 1
+  </select>
+
+  <select id="selectAllSpecById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from t_spec
+    where spec_id in
+
+    <foreach item="specId" index="index" collection="list" open="(" separator="," close=")">
+      #{specId, jdbcType=INTEGER}
+    </foreach>
+  </select>
+
+  <select id="selectAllOnlyIdAndInventory" resultMap="BaseResultMap">
+    select spec_id, now_inventory from t_spec
+  </select>
+
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(*) from t_spec
+  </select>
+
+  <select id="selectForUpdateById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from t_spec where spec_id = #{specId} for update
+  </select>
+
+  <update id="updateInventory" parameterType="com.ywcjxf.mall.pojo.Spec">
+    <!--update t_spec set now_inventory = now_inventory+#{param1} where spec_id = #{param2}
+    -->
+    update t_spec set now_inventory = now_inventory+#{nowInventory} where spec_id = #{specId}
+  </update>
+</mapper>

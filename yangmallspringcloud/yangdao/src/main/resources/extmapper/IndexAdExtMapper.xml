@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.IndexAdMapper">
+  <select id="selectIdByNullOrderByIdLimitOne" resultType="java.lang.Integer">
+    select index_ad_id from t_index_ad where image_url is null order by index_ad_id limit 1
+  </select>
+  <!--上面可以换成max-->
+  
+  <select id="selectAllValidAdByCategory" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_index_ad
+    where category_ad_id = #{param1} and is_use =1 and is_delete = 0 and start_date <![CDATA[ <= ]]> #{param2} and #{param2} &lt; end_date order by sort
+  </select>
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.LogisticsMapper">
+  <resultMap id="BaseResultMap" type="com.ywcjxf.mall.pojo.Logistics">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="send_number" jdbcType="VARCHAR" property="sendNumber" />
+    <result column="send_status_code" jdbcType="INTEGER" property="sendStatusCode" />
+    <result column="send_status_name" jdbcType="VARCHAR" property="sendStatusName" />
+    <result column="yunfei_cost" jdbcType="VARCHAR" property="yunfeiCost" />
+    <result column="send_date" jdbcType="TIMESTAMP" property="sendDate" />
+    <result column="receive_date" jdbcType="TIMESTAMP" property="receiveDate" />
+    <result column="address_info" jdbcType="VARCHAR" property="addressInfo" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ywcjxf.mall.pojo.Logistics">
+    insert into t_logistics (name, order_id, create_date, 
+      province, city, district, 
+      address, send_number, send_status_code, 
+      send_status_name, yunfei_cost, send_date, 
+      receive_date, address_info, phone_number, 
+      user_id)
+    values (#{name,jdbcType=VARCHAR}, #{orderId,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{sendNumber,jdbcType=VARCHAR}, #{sendStatusCode,jdbcType=INTEGER}, 
+      #{sendStatusName,jdbcType=VARCHAR}, #{yunfeiCost,jdbcType=VARCHAR}, #{sendDate,jdbcType=TIMESTAMP}, 
+      #{receiveDate,jdbcType=TIMESTAMP}, #{addressInfo,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywcjxf.mall.pojo.Logistics">
+    insert into t_logistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sendNumber != null">
+        send_number,
+      </if>
+      <if test="sendStatusCode != null">
+        send_status_code,
+      </if>
+      <if test="sendStatusName != null">
+        send_status_name,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+      <if test="sendDate != null">
+        send_date,
+      </if>
+      <if test="receiveDate != null">
+        receive_date,
+      </if>
+      <if test="addressInfo != null">
+        address_info,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sendNumber != null">
+        #{sendNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sendStatusCode != null">
+        #{sendStatusCode,jdbcType=INTEGER},
+      </if>
+      <if test="sendStatusName != null">
+        #{sendStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null">
+        #{sendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveDate != null">
+        #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addressInfo != null">
+        #{addressInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

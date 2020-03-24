@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.ItemMapper">
+  <resultMap id="BaseResultMap" type="com.ywcjxf.mall.pojo.Item">
+    <id column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="like_image_url" jdbcType="VARCHAR" property="likeImageUrl" />
+    <result column="first_district_id" jdbcType="INTEGER" property="firstDistrictId" />
+    <result column="first_district_name" jdbcType="VARCHAR" property="firstDistrictName" />
+    <result column="second_district_id" jdbcType="INTEGER" property="secondDistrictId" />
+    <result column="second_district_name" jdbcType="VARCHAR" property="secondDistrictName" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="price" jdbcType="NUMERIC" property="price" />
+    <result column="sale_price" jdbcType="NUMERIC" property="salePrice" />
+    <result column="reprensent_price" jdbcType="NUMERIC" property="reprensentPrice" />
+    <result column="yunfei_cost" jdbcType="VARCHAR" property="yunfeiCost" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
+    <result column="now_inventory" jdbcType="INTEGER" property="nowInventory" />
+    <result column="original_inventory" jdbcType="INTEGER" property="originalInventory" />
+    <result column="total_sales" jdbcType="INTEGER" property="totalSales" />
+    <result column="parameters" jdbcType="VARCHAR" property="parameters" />
+    <result column="detail_image_links" jdbcType="VARCHAR" property="detailImageLinks" />
+    <result column="status_code" jdbcType="INTEGER" property="statusCode" />
+    <result column="status_name" jdbcType="VARCHAR" property="statusName" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="tsv_column" jdbcType="OTHER" property="tsvColumn" />
+    <result column="enter_num" jdbcType="INTEGER" property="enterNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    item_id, title, subtitle, note, image_url, like_image_url, first_district_id, first_district_name, 
+    second_district_id, second_district_name, category_id, category_name, spec_id, spec_name, 
+    price, sale_price, reprensent_price, yunfei_cost, sales, now_inventory, original_inventory, 
+    total_sales, parameters, detail_image_links, status_code, status_name, is_delete, 
+    create_date, tsv_column, enter_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_item
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_item
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywcjxf.mall.pojo.Item">
+    insert into t_item (item_id, title, subtitle, 
+      note, image_url, like_image_url, 
+      first_district_id, first_district_name, second_district_id, 
+      second_district_name, category_id, category_name, 
+      spec_id, spec_name, price, 
+      sale_price, reprensent_price, yunfei_cost, 
+      sales, now_inventory, original_inventory, 
+      total_sales, parameters, detail_image_links, 
+      status_code, status_name, is_delete, 
+      create_date, tsv_column, enter_num
+      )
+    values (#{itemId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{likeImageUrl,jdbcType=VARCHAR}, 
+      #{firstDistrictId,jdbcType=INTEGER}, #{firstDistrictName,jdbcType=VARCHAR}, #{secondDistrictId,jdbcType=INTEGER}, 
+      #{secondDistrictName,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, 
+      #{specId,jdbcType=INTEGER}, #{specName,jdbcType=VARCHAR}, #{price,jdbcType=NUMERIC}, 
+      #{salePrice,jdbcType=NUMERIC}, #{reprensentPrice,jdbcType=NUMERIC}, #{yunfeiCost,jdbcType=VARCHAR}, 
+      #{sales,jdbcType=INTEGER}, #{nowInventory,jdbcType=INTEGER}, #{originalInventory,jdbcType=INTEGER}, 
+      #{totalSales,jdbcType=INTEGER}, #{parameters,jdbcType=VARCHAR}, #{detailImageLinks,jdbcType=VARCHAR}, 
+      #{statusCode,jdbcType=INTEGER}, #{statusName,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{tsvColumn,jdbcType=OTHER}, #{enterNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywcjxf.mall.pojo.Item">
+    insert into t_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="subtitle != null">
+        subtitle,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="likeImageUrl != null">
+        like_image_url,
+      </if>
+      <if test="firstDistrictId != null">
+        first_district_id,
+      </if>
+      <if test="firstDistrictName != null">
+        first_district_name,
+      </if>
+      <if test="secondDistrictId != null">
+        second_district_id,
+      </if>
+      <if test="secondDistrictName != null">
+        second_district_name,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="categoryName != null">
+        category_name,
+      </if>
+      <if test="specId != null">
+        spec_id,
+      </if>
+      <if test="specName != null">
+        spec_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="reprensentPrice != null">
+        reprensent_price,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+      <if test="sales != null">
+        sales,
+      </if>
+      <if test="nowInventory != null">
+        now_inventory,
+      </if>
+      <if test="originalInventory != null">
+        original_inventory,
+      </if>
+      <if test="totalSales != null">
+        total_sales,
+      </if>
+      <if test="parameters != null">
+        parameters,
+      </if>
+      <if test="detailImageLinks != null">
+        detail_image_links,
+      </if>
+      <if test="statusCode != null">
+        status_code,
+      </if>
+      <if test="statusName != null">
+        status_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="tsvColumn != null">
+        tsv_column,
+      </if>
+      <if test="enterNum != null">
+        enter_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likeImageUrl != null">
+        #{likeImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDistrictId != null">
+        #{firstDistrictId,jdbcType=INTEGER},
+      </if>
+      <if test="firstDistrictName != null">
+        #{firstDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDistrictId != null">
+        #{secondDistrictId,jdbcType=INTEGER},
+      </if>
+      <if test="secondDistrictName != null">
+        #{secondDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="specId != null">
+        #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="specName != null">
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=NUMERIC},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="reprensentPrice != null">
+        #{reprensentPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+      <if test="sales != null">
+        #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="nowInventory != null">
+        #{nowInventory,jdbcType=INTEGER},
+      </if>
+      <if test="originalInventory != null">
+        #{originalInventory,jdbcType=INTEGER},
+      </if>
+      <if test="totalSales != null">
+        #{totalSales,jdbcType=INTEGER},
+      </if>
+      <if test="parameters != null">
+        #{parameters,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImageLinks != null">
+        #{detailImageLinks,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="statusName != null">
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsvColumn != null">
+        #{tsvColumn,jdbcType=OTHER},
+      </if>
+      <if test="enterNum != null">
+        #{enterNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywcjxf.mall.pojo.Item">
+    update t_item
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likeImageUrl != null">
+        like_image_url = #{likeImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDistrictId != null">
+        first_district_id = #{firstDistrictId,jdbcType=INTEGER},
+      </if>
+      <if test="firstDistrictName != null">
+        first_district_name = #{firstDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDistrictId != null">
+        second_district_id = #{secondDistrictId,jdbcType=INTEGER},
+      </if>
+      <if test="secondDistrictName != null">
+        second_district_name = #{secondDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="specId != null">
+        spec_id = #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="specName != null">
+        spec_name = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=NUMERIC},
+      </if>
+      <if test="salePrice != null">
+        sale_price = #{salePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="reprensentPrice != null">
+        reprensent_price = #{reprensentPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+      <if test="sales != null">
+        sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="nowInventory != null">
+        now_inventory = #{nowInventory,jdbcType=INTEGER},
+      </if>
+      <if test="originalInventory != null">
+        original_inventory = #{originalInventory,jdbcType=INTEGER},
+      </if>
+      <if test="totalSales != null">
+        total_sales = #{totalSales,jdbcType=INTEGER},
+      </if>
+      <if test="parameters != null">
+        parameters = #{parameters,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImageLinks != null">
+        detail_image_links = #{detailImageLinks,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        status_code = #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="statusName != null">
+        status_name = #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsvColumn != null">
+        tsv_column = #{tsvColumn,jdbcType=OTHER},
+      </if>
+      <if test="enterNum != null">
+        enter_num = #{enterNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywcjxf.mall.pojo.Item">
+    update t_item
+    set title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      like_image_url = #{likeImageUrl,jdbcType=VARCHAR},
+      first_district_id = #{firstDistrictId,jdbcType=INTEGER},
+      first_district_name = #{firstDistrictName,jdbcType=VARCHAR},
+      second_district_id = #{secondDistrictId,jdbcType=INTEGER},
+      second_district_name = #{secondDistrictName,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      spec_id = #{specId,jdbcType=INTEGER},
+      spec_name = #{specName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=NUMERIC},
+      sale_price = #{salePrice,jdbcType=NUMERIC},
+      reprensent_price = #{reprensentPrice,jdbcType=NUMERIC},
+      yunfei_cost = #{yunfeiCost,jdbcType=VARCHAR},
+      sales = #{sales,jdbcType=INTEGER},
+      now_inventory = #{nowInventory,jdbcType=INTEGER},
+      original_inventory = #{originalInventory,jdbcType=INTEGER},
+      total_sales = #{totalSales,jdbcType=INTEGER},
+      parameters = #{parameters,jdbcType=VARCHAR},
+      detail_image_links = #{detailImageLinks,jdbcType=VARCHAR},
+      status_code = #{statusCode,jdbcType=INTEGER},
+      status_name = #{statusName,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      tsv_column = #{tsvColumn,jdbcType=OTHER},
+      enter_num = #{enterNum,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+</mapper>

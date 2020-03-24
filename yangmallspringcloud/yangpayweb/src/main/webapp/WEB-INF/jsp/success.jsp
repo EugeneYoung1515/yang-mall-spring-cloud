@@ -1,0 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>支付成功</title>
+    <script language=javascript>
+        setTimeout("window.location.href='http://www.yangmall.com'",400)
+    </script>
+</head>
+<body>
+支付成功成功!将跳转到<a href="http://www.yangmall.com">首页</a>
+</body>
+</html>

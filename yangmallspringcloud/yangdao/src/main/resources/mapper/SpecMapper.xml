@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.SpecMapper">
+  <resultMap id="BaseResultMap" type="com.ywcjxf.mall.pojo.Spec">
+    <id column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="spec_name" jdbcType="VARCHAR" property="specName" />
+    <result column="price" jdbcType="NUMERIC" property="price" />
+    <result column="sale_price" jdbcType="NUMERIC" property="salePrice" />
+    <result column="represent_price" jdbcType="NUMERIC" property="representPrice" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
+    <result column="now_inventory" jdbcType="INTEGER" property="nowInventory" />
+    <result column="original_inventory" jdbcType="INTEGER" property="originalInventory" />
+    <result column="status_code" jdbcType="INTEGER" property="statusCode" />
+    <result column="status_name" jdbcType="VARCHAR" property="statusName" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="spec_title" jdbcType="VARCHAR" property="specTitle" />
+    <result column="yunfei_cost" jdbcType="VARCHAR" property="yunfeiCost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    spec_id, spec_name, price, sale_price, represent_price, sales, now_inventory, original_inventory, 
+    status_code, status_name, item_id, spec_title, yunfei_cost
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_spec
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_spec
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywcjxf.mall.pojo.Spec">
+    insert into t_spec (spec_id, spec_name, price, 
+      sale_price, represent_price, sales, 
+      now_inventory, original_inventory, status_code, 
+      status_name, item_id, spec_title, 
+      yunfei_cost)
+    values (#{specId,jdbcType=INTEGER}, #{specName,jdbcType=VARCHAR}, #{price,jdbcType=NUMERIC}, 
+      #{salePrice,jdbcType=NUMERIC}, #{representPrice,jdbcType=NUMERIC}, #{sales,jdbcType=INTEGER}, 
+      #{nowInventory,jdbcType=INTEGER}, #{originalInventory,jdbcType=INTEGER}, #{statusCode,jdbcType=INTEGER}, 
+      #{statusName,jdbcType=VARCHAR}, #{itemId,jdbcType=INTEGER}, #{specTitle,jdbcType=VARCHAR}, 
+      #{yunfeiCost,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywcjxf.mall.pojo.Spec">
+    insert into t_spec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="specId != null">
+        spec_id,
+      </if>
+      <if test="specName != null">
+        spec_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="representPrice != null">
+        represent_price,
+      </if>
+      <if test="sales != null">
+        sales,
+      </if>
+      <if test="nowInventory != null">
+        now_inventory,
+      </if>
+      <if test="originalInventory != null">
+        original_inventory,
+      </if>
+      <if test="statusCode != null">
+        status_code,
+      </if>
+      <if test="statusName != null">
+        status_name,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="specTitle != null">
+        spec_title,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="specId != null">
+        #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="specName != null">
+        #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=NUMERIC},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="representPrice != null">
+        #{representPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="sales != null">
+        #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="nowInventory != null">
+        #{nowInventory,jdbcType=INTEGER},
+      </if>
+      <if test="originalInventory != null">
+        #{originalInventory,jdbcType=INTEGER},
+      </if>
+      <if test="statusCode != null">
+        #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="statusName != null">
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="specTitle != null">
+        #{specTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywcjxf.mall.pojo.Spec">
+    update t_spec
+    <set>
+      <if test="specName != null">
+        spec_name = #{specName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=NUMERIC},
+      </if>
+      <if test="salePrice != null">
+        sale_price = #{salePrice,jdbcType=NUMERIC},
+      </if>
+      <if test="representPrice != null">
+        represent_price = #{representPrice,jdbcType=NUMERIC},
+      </if>
+      <if test="sales != null">
+        sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="nowInventory != null">
+        now_inventory = #{nowInventory,jdbcType=INTEGER},
+      </if>
+      <if test="originalInventory != null">
+        original_inventory = #{originalInventory,jdbcType=INTEGER},
+      </if>
+      <if test="statusCode != null">
+        status_code = #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="statusName != null">
+        status_name = #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="specTitle != null">
+        spec_title = #{specTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywcjxf.mall.pojo.Spec">
+    update t_spec
+    set spec_name = #{specName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=NUMERIC},
+      sale_price = #{salePrice,jdbcType=NUMERIC},
+      represent_price = #{representPrice,jdbcType=NUMERIC},
+      sales = #{sales,jdbcType=INTEGER},
+      now_inventory = #{nowInventory,jdbcType=INTEGER},
+      original_inventory = #{originalInventory,jdbcType=INTEGER},
+      status_code = #{statusCode,jdbcType=INTEGER},
+      status_name = #{statusName,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=INTEGER},
+      spec_title = #{specTitle,jdbcType=VARCHAR},
+      yunfei_cost = #{yunfeiCost,jdbcType=VARCHAR}
+    where spec_id = #{specId,jdbcType=INTEGER}
+  </update>
+</mapper>

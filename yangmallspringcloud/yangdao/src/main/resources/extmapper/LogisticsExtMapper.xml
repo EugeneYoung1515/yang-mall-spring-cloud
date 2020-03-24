@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.LogisticsMapper">
+  <select id="selectByUserIdOrderByIdLimitOne" resultMap="BaseResultMap">
+    select name, order_id, create_date,
+      province, city, district,
+      address, send_number, send_status_code,
+      send_status_name, yunfei_cost, send_date,
+      receive_date, address_info, phone_number,
+      user_id
+      from t_logistics
+      where user_id = #{userId} order by order_id desc limit 1
+  </select>
+  <update id="updateByOrderId">
+    update t_logistics
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate},
+      </if>
+      <if test="province != null">
+        province = #{province},
+      </if>
+      <if test="city != null">
+        city = #{city},
+      </if>
+      <if test="district != null">
+        district = #{district},
+      </if>
+      <if test="address != null">
+        address = #{address},
+      </if>
+      <if test="sendNumber != null">
+        send_number = #{sendNumber},
+      </if>
+      <if test="sendStatusCode != null">
+        send_status_code = #{sendStatusCode},
+      </if>
+      <if test="sendStatusName != null">
+        send_status_name = #{sendStatusName},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost},
+      </if>
+      <if test="sendDate != null">
+        send_date = #{sendDate},
+      </if>
+      <if test="receiveDate != null">
+        receive_date = #{receiveDate},
+      </if>
+      <if test="addressInfo != null">
+        address_info = #{addressInfo},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId}
+      </if>
+    </set>
+    where order_id = #{orderId}
+  </update>
+  <select id="selectByOrderId" resultMap="BaseResultMap">
+    select name, order_id, create_date,
+    province, city, district,
+    address, send_number, send_status_code,
+    send_status_name, yunfei_cost, send_date,
+    receive_date, address_info, phone_number,
+    user_id
+    from t_logistics
+    where order_id = #{orderId}
+  </select>
+  <insert id="insertSelectiveOrUpdateSelective" parameterType="com.ywcjxf.mall.pojo.Logistics">
+    insert into t_logistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sendNumber != null">
+        send_number,
+      </if>
+      <if test="sendStatusCode != null">
+        send_status_code,
+      </if>
+      <if test="sendStatusName != null">
+        send_status_name,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+      <if test="sendDate != null">
+        send_date,
+      </if>
+      <if test="receiveDate != null">
+        receive_date,
+      </if>
+      <if test="addressInfo != null">
+        address_info,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sendNumber != null">
+        #{sendNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sendStatusCode != null">
+        #{sendStatusCode,jdbcType=INTEGER},
+      </if>
+      <if test="sendStatusName != null">
+        #{sendStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDate != null">
+        #{sendDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveDate != null">
+        #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addressInfo != null">
+        #{addressInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+    on conflict (order_id)
+    do
+    update
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate},
+      </if>
+      <if test="province != null">
+        province = #{province},
+      </if>
+      <if test="city != null">
+        city = #{city},
+      </if>
+      <if test="district != null">
+        district = #{district},
+      </if>
+      <if test="address != null">
+        address = #{address},
+      </if>
+      <if test="sendNumber != null">
+        send_number = #{sendNumber},
+      </if>
+      <if test="sendStatusCode != null">
+        send_status_code = #{sendStatusCode},
+      </if>
+      <if test="sendStatusName != null">
+        send_status_name = #{sendStatusName},
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost = #{yunfeiCost},
+      </if>
+      <if test="sendDate != null">
+        send_date = #{sendDate},
+      </if>
+      <if test="receiveDate != null">
+        receive_date = #{receiveDate},
+      </if>
+      <if test="addressInfo != null">
+        address_info = #{addressInfo},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId}
+      </if>
+    </set>
+  </insert>
+</mapper>

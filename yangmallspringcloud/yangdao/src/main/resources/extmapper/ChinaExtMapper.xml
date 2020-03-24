@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.ChinaMapper">
+   <insert id="insertBatch">
+    insert into t_china (id, name, parent_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR}, #{item.parentId,jdbcType=INTEGER})
+    </foreach>
+   </insert>
+    <sql id="Base_Column_List">
+        id,name,parent_id
+    </sql>
+    <select id="selectById" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from t_china where id = #{id}
+    </select>
+</mapper>

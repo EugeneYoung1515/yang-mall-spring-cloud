@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>yang-mall-spring-cloud</artifactId>
+        <groupId>com.ywcjxf.mall</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>yang-service-common</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../yangserviceinterface</module>
+        <module>../yangservice</module>
+        <module>../yangmanager</module>
+        <module>../yangitem</module>
+        <module>../yangsearch</module>
+        <module>../yangsso</module>
+        <module>../yangcart</module>
+        <module>../yangorder</module>
+        <module>../yangpay</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ywcjxf.mall</groupId>
+            <artifactId>yang-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ywcjxf.mall</groupId>
+            <artifactId>service-constant</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ywcjxf.mall</groupId>
+            <artifactId>jackson-config</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

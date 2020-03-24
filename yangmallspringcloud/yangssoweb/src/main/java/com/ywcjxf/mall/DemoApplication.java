@@ -1,0 +1,42 @@
+package com.ywcjxf.mall;
+
+import com.ywcjxf.mall.web.filter.RedisSessionFilter;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@SpringBootApplication
+//@MapperScan({"com.ywcjxf.mall.dao"})
+//@Controller
+
+@EnableEurekaClient
+@EnableFeignClients
+public class DemoApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(DemoApplication.class);
+	}
+
+	/*
+	@RequestMapping("/init")
+	@ResponseBody
+	public String init(@RequestAttribute("RedisSession") RedisSessionFilter.RedisSession redisSession){
+		System.out.println(redisSession.getAttribute("init"));
+		return "1";
+	}
+	*/
+
+}

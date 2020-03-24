@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywcjxf.mall.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.ywcjxf.mall.pojo.Order">
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="pay_total" jdbcType="NUMERIC" property="payTotal" />
+    <result column="item_total" jdbcType="NUMERIC" property="itemTotal" />
+    <result column="yunfei_cost" jdbcType="NUMERIC" property="yunfeiCost" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="status_name" jdbcType="VARCHAR" property="statusName" />
+    <result column="status_code" jdbcType="INTEGER" property="statusCode" />
+    <result column="pay_method" jdbcType="VARCHAR" property="payMethod" />
+    <result column="pay_platform_number" jdbcType="VARCHAR" property="payPlatformNumber" />
+    <result column="wait_pay_date" jdbcType="TIMESTAMP" property="waitPayDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ywcjxf.mall.pojo.Order">
+    insert into t_order (order_id, user_id, user_name, 
+      create_date, pay_total, item_total, 
+      yunfei_cost, pay_date, status_name, 
+      status_code, pay_method, pay_platform_number, 
+      wait_pay_date)
+    values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{payTotal,jdbcType=NUMERIC}, #{itemTotal,jdbcType=NUMERIC}, 
+      #{yunfeiCost,jdbcType=NUMERIC}, #{payDate,jdbcType=TIMESTAMP}, #{statusName,jdbcType=VARCHAR}, 
+      #{statusCode,jdbcType=INTEGER}, #{payMethod,jdbcType=VARCHAR}, #{payPlatformNumber,jdbcType=VARCHAR},
+      #{waitPayDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywcjxf.mall.pojo.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="payTotal != null">
+        pay_total,
+      </if>
+      <if test="itemTotal != null">
+        item_total,
+      </if>
+      <if test="yunfeiCost != null">
+        yunfei_cost,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="statusName != null">
+        status_name,
+      </if>
+      <if test="statusCode != null">
+        status_code,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="payPlatformNumber != null">
+        pay_platform_number,
+      </if>
+      <if test="waitPayDate != null">
+        wait_pay_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTotal != null">
+        #{payTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="itemTotal != null">
+        #{itemTotal,jdbcType=NUMERIC},
+      </if>
+      <if test="yunfeiCost != null">
+        #{yunfeiCost,jdbcType=NUMERIC},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statusName != null">
+        #{statusName,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCode != null">
+        #{statusCode,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="payPlatformNumber != null">
+        #{payPlatformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="waitPayDate != null">
+        #{waitPayDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
